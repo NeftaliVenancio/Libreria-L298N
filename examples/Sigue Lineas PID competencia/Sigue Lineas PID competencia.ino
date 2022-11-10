@@ -16,17 +16,17 @@ int U = 0;
 // int kd = 12;
 
 
-// int kp = 0.009;
-// int ki = 0.08;
-// int kd = 20;
+ int kp = 0.18;
+ int ki = 0.001;
+ int kd = 8;
 
 
 // Motor 10000rpm
-int kp = 0.00016;
-int ki = 0.015;//0.002;
-int kd = 4;//4;
+//int kp = 0.00016;
+//int ki = 0.015;//0.002;
+//int kd = 4;//4;
 
-int v_base = 180;
+int v_base = 225;
 int veladelante = 250;
 int velatras = 250;
 
@@ -181,7 +181,7 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
 
-  //frenos();
+  frenos();
 
   P = (-1)*( bitRead(PINC,4)*(-5000) + bitRead(PINC,3)*(-4000) + bitRead(PINC,2)*(-3000) + bitRead(PINC,1)*(-2000) + bitRead(PINC,0)*(-1000) + bitRead(PINB,4)*(5000) + bitRead(PINB,3)*(4000) + bitRead(PINB,2)*(3000) + bitRead(PINB,1)*(2000) + bitRead(PINB,0)*(1000));
 
