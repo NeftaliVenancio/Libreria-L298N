@@ -29,6 +29,16 @@ l298n::l298n(int enb, int in4, int in3, int in2, int in1, int ena)
 void l298n::write(int izq, int der)
 {
 
+if( izq > 255 )
+{
+	izq = 255;
+}
+
+if( der < -255 )
+{
+	ider = -255;
+}
+
 //Motor izquierdo
   if (izq >= 0)
   {

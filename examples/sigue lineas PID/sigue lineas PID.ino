@@ -8,18 +8,20 @@ int s3 = 6;
 int s4 = 7;
 
 //Variables PID
-int P = 0;
-int I = 0;
-int D = 0;
+int P = 0.18;
+int I = 0.001;
+int D = 4;
 
-int kp = 0;
+int kp = 5;
 int ki = 0;
 int kd = 0;
 
 int p_ant = 0;
 int u = 0;
 
-int v_base = 100; //0 - 255
+int v_base = 200; //0 - 255
+int veli = 0;
+int veld = 0;
 
 void setup() {
   // put your setup code here, to run once:
@@ -35,13 +37,34 @@ void loop()
 {
   // put your main code here, to run repeatedly:
 
-  P = digitalRead(s4)*(-2) + digitalRead(s3)*(-1) + digitalRead(s2)*(1) + digitalRead(s1)*(2);
+  P = digitalRead(s4)*(-200) + digitalRead(s3)*(-100) + digitalRead(s2)*(100) + digitalRead(s1)*(200);
   I = I + P;
   D = P - p_ant;
   p_ant = P;
 
   u = (kp*P) + (ki*I) + (kd*D);
 
-  motores.write(v_base - u, v_base + u);
+  veli = v_base + u;
+  veld = v_base - u;
+
+  if(veli >= v_base)
+  {
+    veli =  v_base;
+  }
+  else if(veli < -v_base)
+  {
+    veli =  -v_base;
+  }
+
+  if(veld >= v_base)
+  {
+    veld =  v_base;
+  }
+  else if(veld < -v_base)
+  {
+    veld =  -v_base;
+  }
+
+  motores.write(veli, veld);
 
 }
