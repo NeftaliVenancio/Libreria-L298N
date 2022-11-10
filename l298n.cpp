@@ -1,13 +1,14 @@
+
 /*
-  7 segmentos.h - Library for display of seven segments
-  Created by Neftali Venancio, October 22, 2018.
+  Driver_L298N.h - Libreria para el control de motores usando el driver L298N
+  Creada por Neftali Venancio, Noviembre 9, 2022.
   Released into the public domain.
 */
 
 #include "Arduino.h"
-#include "dis7seg.h"
+#include "l298n.h"
 
-l298n::l298n(int ena, int in11, int in2, int in3, int in4, int enb);
+l298n::l298n(int enb, int in4, int in3, int in2, int in1, int ena)
 {
   pinMode(in1,OUTPUT);
   pinMode(in2,OUTPUT);
@@ -31,31 +32,31 @@ void l298n::write(int izq, int der)
 //Motor izquierdo
   if (izq >= 0)
   {
-    digitalWrite(in1,HIGH);
-    digitalWrite(in2,LOW);
+    digitalWrite(_in1,HIGH);
+    digitalWrite(_in2,LOW);
   }
   else
   {
-    digitalWrite(in3,LOW);
-    digitalWrite(in4,HIGH);
+    digitalWrite(_in1,LOW);
+    digitalWrite(_in2,HIGH);
     izq = (-1)*(izq);
   }
-  analogWrite(ena,izq);
+  analogWrite(_ena,izq);
 
   //Motor derecho
   if (der >= 0)
   {
-    digitalWrite(in1,HIGH);
-    digitalWrite(in2,LOW);
+    digitalWrite(_in3,HIGH);
+    digitalWrite(_in4,LOW);
   }
   else
   {
-    digitalWrite(in3,LOW);
-    digitalWrite(in4,HIGH);
+    digitalWrite(_in3,LOW);
+    digitalWrite(_in4,HIGH);
     der = (-1)*der;
   }
 
   
-  analogWrite(enb,der);
+  analogWrite(_enb,der);
 
 }

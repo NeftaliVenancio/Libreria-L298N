@@ -21,9 +21,9 @@
 class l298n
 {
         public:
-                l298n(int ena, int in11, int in2, int in3, int in4, int enb);
+                l298n(int enb, int in4, int in3, int in2, int in1, int ena);
 
-                void write( int n);
+                void write( int izq, int der);
                 void fordward(int vel);
                 void backward(int vel);
                 void read(int m);
