@@ -16,8 +16,8 @@ int U = 0;
 // int kd = 12;
 
 
- int kp = 0.18;
- int ki = 0.001;
+ int kp = 0.00018;
+ int ki = 0.004;
  int kd = 8;
 
 
@@ -26,7 +26,7 @@ int U = 0;
 //int ki = 0.015;//0.002;
 //int kd = 4;//4;
 
-int v_base = 225;
+int v_base = 180;
 int veladelante = 250;
 int velatras = 250;
 

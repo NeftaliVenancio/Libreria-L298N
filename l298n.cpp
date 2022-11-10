@@ -36,7 +36,7 @@ if( izq > 255 )
 
 if( der < -255 )
 {
-	ider = -255;
+	der = -255;
 }
 
 //Motor izquierdo
