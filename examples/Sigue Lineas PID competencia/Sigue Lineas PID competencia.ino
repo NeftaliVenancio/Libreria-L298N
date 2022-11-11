@@ -11,14 +11,14 @@ int D = 0;
 int U = 0;
 
 //Motor 3000rpm
-// int kp = 0.0018;
-// int ki = 0.001;
+// int kp = 0.0009;
+// int ki = 0.0001;
 // int kd = 12;
 
 
- int kp = 0.00018;
- int ki = 0.004;
- int kd = 8;
+ int kp = 0.0002;
+ int ki = 0.0008;
+ int kd = 10;
 
 
 // Motor 10000rpm
@@ -26,7 +26,7 @@ int U = 0;
 //int ki = 0.015;//0.002;
 //int kd = 4;//4;
 
-int v_base = 180;
+int v_base = 120;
 int veladelante = 250;
 int velatras = 250;
 
@@ -131,12 +131,12 @@ void motores( int izq, int der)
 
  void frenos(){
   
-  if(P <= -10000)
+  if(P <= -5000)
   {
     motores(-velatras, veladelante);
   }
   
-  if (P >= 10000)
+  if (P >= 5000)
   {
     motores(veladelante, -velatras);
     
